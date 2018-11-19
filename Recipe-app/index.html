@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+		</script>
+	</head>
+	<body>
+		<div class="section" id= "1_add">
+			<h1>Whats in Your Fridge?</h1>
+			<h3> Find Recipes By Inserting Ingredients Below:</h3>
+			<button type="Add More" class="add_more">Add More</button><br>
+			<form action="/results.html" id="fridge_ing" method="POST" >
+				<div class="fridge elements">
+					<p>Ingredient #1: <input name="Ingredient_1"> </input><br></p>
+					<p>Ingredient #2:<input name="Ingredient_2"> </input><br></p>
+					<p>Ingredient #3:<input name="Ingredient_3"> </input><br></p>
+				</div>
+				<input type="submit">
+			</form>
+			<button type="button" class="search" id="search_1">Search!</button>
+		</div>
+
+		<div class="section" id= "2_add">
+			<h1>Add A Recipe</h1>
+			<h3> Add A New Recipe to the DB:</h3>
+			<div id="name">
+				<p>Recipe Name: <input name="recipe_name" id="recipe_name"> </input><br></p>
+				<button type="Add More" class="add_more">Add More</button>
+			</div>
+			<form id="recipe_ing">
+				<div class="add">
+					<div class="elements" id="all_ing">
+						<p>Ingredient #1:<input name="Ingredient_1"> </input><br></p>
+						<p>Ingredient #2:<input name="Ingredient_2"> </input><br></p>
+						<p>Ingredient #3:<input name="Ingredient_3"> </input><br></p>
+					</div>
+					<br>
+				</div>
+			</form>
+			<button type="button" class="search" id="search_2">Search!</button>
+		</div>
+
+		<div class="section" id="3_add">
+			<h1>Browse Recipes</h1>
+			<h3> Find Recipes Based on tags:</h3>
+			<div class="elements tags" id="tags"></div>
+			<button type="button" class="search" id="search_3">Search!</button>
+		</div>
+		<script type="text/javascript" src="js/client/main.js"></script>
+		<script>
+			RTA.client.start();
+		</script>
+	</body>
+</html>

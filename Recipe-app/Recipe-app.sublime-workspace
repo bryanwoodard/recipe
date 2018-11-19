@@ -1,0 +1,978 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"htm",
+				"htmlHeaders"
+			],
+			[
+				"js",
+				"jsHeaders"
+			],
+			[
+				"state",
+				"state"
+			],
+			[
+				"city",
+				"_ccity"
+			],
+			[
+				"grad",
+				"grand_total"
+			],
+			[
+				"stor",
+				"store_name"
+			],
+			[
+				"e",
+				"e"
+			],
+			[
+				"m",
+				"mitr"
+			],
+			[
+				"has",
+				"has_free"
+			],
+			[
+				"re",
+				"returnDate"
+			],
+			[
+				"get",
+				"getBooks"
+			],
+			[
+				"u",
+				"upc"
+			],
+			[
+				"pro",
+				"product_price"
+			],
+			[
+				"de",
+				"product_description"
+			],
+			[
+				"ima",
+				"product_image_url"
+			],
+			[
+				"pa",
+				"page_id"
+			],
+			[
+				"mer",
+				"merchant_group_id"
+			],
+			[
+				"dmPt",
+				"dmPt"
+			],
+			[
+				"customer",
+				"customer_id"
+			],
+			[
+				"ga",
+				"ga_optimize"
+			],
+			[
+				"typ",
+				"typeof"
+			],
+			[
+				"prod",
+				"product_variation"
+			],
+			[
+				"promo",
+				"promo_code"
+			],
+			[
+				"tried",
+				"tried_coupon"
+			],
+			[
+				"promos",
+				"promos_used"
+			],
+			[
+				"un",
+				"unique_prod_brand_weighted"
+			],
+			[
+				"tile",
+				"tile_title"
+			],
+			[
+				"tit",
+				"tile_title_seq"
+			],
+			[
+				"cart",
+				"cart-add"
+			],
+			[
+				"ha",
+				"halloween_product_category"
+			],
+			[
+				"p",
+				"prod_count"
+			],
+			[
+				"con",
+				"contSA"
+			],
+			[
+				"text",
+				"textarea"
+			],
+			[
+				"submit",
+				"submitButton"
+			],
+			[
+				"j",
+				"jQuery"
+			],
+			[
+				"clea",
+				"clearInterval"
+			],
+			[
+				"runnin",
+				"runningTotal"
+			],
+			[
+				"num",
+				"numSides"
+			],
+			[
+				"sides",
+				"numSides"
+			],
+			[
+				"sales",
+				"salesTax"
+			],
+			[
+				"displ",
+				"displayLinks"
+			],
+			[
+				"disp",
+				"dispObj"
+			],
+			[
+				"d",
+				"displaylinks"
+			],
+			[
+				"dis",
+				"dispObj"
+			],
+			[
+				"partner",
+				"partnerLink"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"bag",
+				"bagButton"
+			],
+			[
+				"sale",
+				"sale_items_bag"
+			],
+			[
+				"bought",
+				"bought_sale_item"
+			],
+			[
+				"sal",
+				"sale_items_bag"
+			],
+			[
+				"o",
+				"On"
+			],
+			[
+				"ba",
+				"bagButton"
+			],
+			[
+				"cookie",
+				"cookie_key"
+			],
+			[
+				"oldspli",
+				"oldsplit2"
+			],
+			[
+				"older",
+				"older_entry"
+			],
+			[
+				"oldsp",
+				"oldsplit"
+			],
+			[
+				"nw",
+				"new_prod_view"
+			],
+			[
+				"dle",
+				"delete_cookie"
+			],
+			[
+				"dele",
+				"delete_cookie"
+			],
+			[
+				"old",
+				"oldval"
+			],
+			[
+				"new",
+				"new_prod_view"
+			],
+			[
+				"cook",
+				"cookie_key"
+			],
+			[
+				"produ",
+				"productArray"
+			],
+			[
+				"produc",
+				"product_name"
+			],
+			[
+				"ad",
+				"admantx_url"
+			],
+			[
+				"en",
+				"englishWord"
+			],
+			[
+				"first",
+				"firstLetter"
+			],
+			[
+				"word",
+				"wordArray"
+			],
+			[
+				"pig",
+				"pigWord"
+			],
+			[
+				"h",
+				"height"
+			],
+			[
+				"book",
+				"book_image"
+			],
+			[
+				"bo",
+				"inline-block"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "// node Projects/Recipe-app/app.js\n//http://bwteal.com:8080/\n\nconst http = require(\"http\");\nconst fs = require('fs');\nvar htmlHeaders = {\n    'Content-Type': 'text/html; charset=utf-8'\n};\nvar jsHeaders = {\n    'Content-Type': 'text/javascript; charset=utf-8'\n};\nvar querystring = require(\"querystring\");\nvar path = require(\"path\");\n\n//Testing Creation of server\nhttp.createServer(function (req, res) {\n    if (req.url == \"/\") {\n        res.writeHead(200, htmlHeaders);\n        var index_page = fs.readFileSync(path.resolve(__dirname, \"./index.html\"));\n        res.write(index_page);\n        res.end();\n    } else if (req.url.includes(\"js/client/\")) {\n        res.writeHead(200, jsHeaders);\n        var js = fs.readFileSync(path.resolve(__dirname, `./${req.url}`));\n        console.log(req.url);\n        res.write(js);\n        res.end();\n    } else if (req.url.split(\"/\")[1] == \"results.html\" && req.method == \"POST\") {\n        var body = \"\";\n        var post = {};        \n        \n        req.on(\"data\", (data)=> {\n          body += data;\n        });\n        \n        req.on(\"end\", ()=> {\n          post = querystring.parse(body);\n          console.log(post);\n          res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});\n          res.end(JSON.stringify(post));\n        });\n    }\n}).listen(\"8080\");\n\nconsole.log(\"Server Running and listening, Bitch\");",
+			"file": "app.js",
+			"file_size": 1380,
+			"file_write_time": 1525228307000000,
+			"settings":
+			{
+				"buffer_size": 1368,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/client/main.js",
+			"settings":
+			{
+				"buffer_size": 2672,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/recipes.json",
+			"settings":
+			{
+				"buffer_size": 6,
+				"line_ending": "Unix",
+				"name": "//Data"
+			}
+		},
+		{
+			"file": "next steps.txt",
+			"settings":
+			{
+				"buffer_size": 760,
+				"line_ending": "Unix",
+				"name": "next steps:"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1907,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 127.0,
+		"selected_items":
+		[
+			[
+				"script",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"scrip",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"acript",
+				"Set Syntax: AppleScript"
+			],
+			[
+				"scri",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"scr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"scrp",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"lain",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"cript",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"scrit",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"cr",
+				"Package Control: Remove Channel"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Disable Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"text",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"jav",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"html",
+				"HTMLBeautify"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 156.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/bryanwoodard/Projects/Recipe-app/Recipe-app.sublime-project",
+		"/Users/bryanwoodard/Projects/Recipe-app/index.html",
+		"/Users/bryanwoodard/Desktop/charles local mapping/Daily Beast/daily beast aprsely tag.js",
+		"/Users/bryanwoodard/Documents/GitHub/solutions/server/static/hosted/bwoodard/Hello world.txt",
+		"/Users/bryanwoodard/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/bryanwoodard/Desktop/bryan personal/Recipe tracker app/app.js",
+		"/Users/bryanwoodard/Desktop/To DO",
+		"/Users/bryanwoodard/Google Drive/Tealium/Services/Post-Deploy/Client Support/victoriassecret/GDPR possible solution",
+		"/Users/bryanwoodard/Google Drive/clients/Dominos/dominos order conf.json",
+		"/Users/bryanwoodard/Google Drive/clients/Paper Mart/bloomreach tag.50 .js",
+		"/Users/bryanwoodard/Google Drive/clients/UPS/ups Webtrends x Selectors project",
+		"/Users/bryanwoodard/Google Drive/Gilbert x Bryan 1-1 - MAIN",
+		"/Users/bryanwoodard/Desktop/gilbert bryan 1-1",
+		"/Users/bryanwoodard/Google Drive/clients/Aeropostale/cheetah digital - u.send function.js",
+		"/Users/bryanwoodard/Google Drive/clients/New Balance/New Balance b obj - order confirmation",
+		"/Users/bryanwoodard/Google Drive/clients/Aeropostale/aeropostale b obj",
+		"/Users/bryanwoodard/Google Drive/clients/L Brands/VS optout template.js",
+		"/Applications/MAMP/htdocs/Homepage.html",
+		"/Users/bryanwoodard/Desktop/charles local mapping/rentpath/rent-utag.js",
+		"/Users/bryanwoodard/Google Drive/clients/Aeropostale/b order confirmation.json",
+		"/Users/bryanwoodard/Google Drive/clients/Hautelook/BV tag #160 template.js",
+		"/Users/bryanwoodard/Google Drive/clients/host analytics/host analytics - Goal Tracking",
+		"/Users/bryanwoodard/Google Drive/clients/Nine West/ninewest b obj",
+		"/Users/bryanwoodard/Google Drive/clients/Yankee Candle/yankee Candle utag.4.30.js",
+		"/Users/bryanwoodard/Google Drive/clients/Penguin Random House/PRH IR notes.txt",
+		"/Users/bryanwoodard/Google Drive/clients/worldvision CA/Worldvision - ga issues - b order conf obj",
+		"/Users/bryanwoodard/Google Drive/clients/Bed Bath Beyond/order conf b obj.js",
+		"/Users/bryanwoodard/Google Drive/clients/Neiman Marcus/p.last call b object- order conf.json",
+		"/Users/bryanwoodard/Google Drive/clients/Neiman Marcus/movable ink container.js",
+		"/Users/bryanwoodard/Desktop/charles local mapping/xaxis/ants analytics.js",
+		"/Users/bryanwoodard/Google Drive/clients/volaris/amplitude object at callback.json",
+		"/Applications/MAMP/htdocs/Products.html",
+		"/Users/bryanwoodard/Google Drive/clients/Vera Bradley/scratch script - linkshare - vera bradley.js",
+		"/Users/bryanwoodard/Desktop/charles local mapping/Vera Bradley/Linkshare- utag.13.js",
+		"/Users/bryanwoodard/Google Drive/clients/Vera Bradley/order conf - b - 25 off WITH free item.js",
+		"/Users/bryanwoodard/Google Drive/clients/Vera Bradley/order conf - b - 25 off - no free item.js",
+		"/Users/bryanwoodard/Google Drive/clients/Vera Bradley/order conf - b - free + discount code.js",
+		"/Users/bryanwoodard/Google Drive/clients/Luckyvitamin/unbxd CustCont.js",
+		"/Users/bryanwoodard/Google Drive/clients/Gulf States Toyota/gst event stuff 11:11",
+		"/Users/bryanwoodard/Google Drive/clients/Hautelook/hautelook order confirm.js",
+		"/Users/bryanwoodard/Desktop/charles local mapping/tmobile/metropcs/sitecat metro pcs.js",
+		"/Users/bryanwoodard/Google Drive/clients/Gulf States Toyota/GTM monekey patch.js",
+		"/Users/bryanwoodard/Google Drive/clients/Hautelook/hautelook order confirm b object with name.json",
+		"/Users/bryanwoodard/Google Drive/clients/Lincoln Financial Group/viewport dynamic event sending.js",
+		"/Users/bryanwoodard/Google Drive/clients/Alaska Airlines/capture return date from flight.js",
+		"/Users/bryanwoodard/Google Drive/clients/Hautelook/liveconnect tag 120 conv snippet update.js",
+		"/Users/bryanwoodard/Desktop/charles local mapping/esteelauder/appmeasurement.js",
+		"/Users/bryanwoodard/Google Drive/clients/Estee Lauder - ELC online/amcids - tag 19 template - lib adobe.js",
+		"/Users/bryanwoodard/Google Drive/clients/Estee Lauder - ELC online/aaam - tag 10 template - lib adobe.js",
+		"/Users/bryanwoodard/Google Drive/clients/Rentpath/Apartment guide one time fire script.txt",
+		"/Users/bryanwoodard/Google Drive/Mentorship/Gilbert x Bryan 1-1 - MAIN",
+		"/Users/bryanwoodard/Google Drive/clients/Hautelook/order confirmation b object.js",
+		"/Users/bryanwoodard/Google Drive/clients/Hautelook/haute:nord a2c object.js",
+		"/Users/bryanwoodard/Desktop/bryan personal/2-The-Cooler-Parts-of-ES2015/video-1/start/arrow-this.js",
+		"/Users/bryanwoodard/Desktop/bryan personal/2-The-Cooler-Parts-of-ES2015/video-1/final/arrow-this.js",
+		"/Users/bryanwoodard/Google Drive/clients/Rentpath/fire conv tag once script.js",
+		"/Users/bryanwoodard/Google Drive/clients/Rentpath/fire conv tag once script - working.js",
+		"/Users/bryanwoodard/Google Drive/clients/Roins Fin Services/adobe plan selection script.js",
+		"/Users/bryanwoodard/Google Drive/clients/Carters/::Carters - canada utag.js",
+		"/Users/bryanwoodard/Google Drive/clients/Carters/Carters - Main utag.js",
+		"/Users/bryanwoodard/Google Drive/clients/IBM/true ibmers.json",
+		"/Users/bryanwoodard/Google Drive/clients/Epson/adobe target epson sync implement.js",
+		"/Users/bryanwoodard/Desktop/test1.js",
+		"/Users/bryanwoodard/Google Drive/clients/Bristol Meyers Squib/:: bms - Immunooncologyhcpunbranded utag.js ",
+		"/Users/bryanwoodard/Google Drive/clients/Bristol Meyers Squib/:: bms - orenciaconsumerbranded utag.js",
+		"/Users/bryanwoodard/Google Drive/clients/Bristol Meyers Squib/:: bms - yervoyhcpbranded utag.js",
+		"/Users/bryanwoodard/Google Drive/clients/Bristol Meyers Squib/:: bms - yervoyconsumerbranded utag.js",
+		"/Users/bryanwoodard/Google Drive/TO DO/To DO",
+		"/Users/bryanwoodard/Desktop/charles local mapping/PVH/::pvh ck utag.js",
+		"/Users/bryanwoodard/Desktop/charles local mapping/PVH/::adobe tag.js",
+		"/Users/bryanwoodard/Desktop/test.js",
+		"/Users/bryanwoodard/Google Drive/clients/Garmin/garmin 4.002 utag.js",
+		"/Users/bryanwoodard/Google Drive/clients/IBM/ibm test action send.json",
+		"/Users/bryanwoodard/Documents/Latest version - Tealium Collect.js",
+		"/Users/bryanwoodard/Google Drive/clients/UPS/:: ups, maestro backup. utag.sync 9:26.js",
+		"/Users/bryanwoodard/Google Drive/clients/IPC/Knitting Network/IPC - GUA template.js",
+		"/Users/bryanwoodard/Google Drive/clients/Luxottica/Lux ET issue - RepeatXML",
+		"/Users/bryanwoodard/Google Drive/clients/Advanced Auto Parts/json+ld edited tag template.js",
+		"/Users/bryanwoodard/Google Drive/clients/Luxottica/OPSM/::Luxottica - OPSM - tealium universal tag - utag.loader ut4.008.js",
+		"/Users/bryanwoodard/Google Drive/clients/TI/Cookie handler mods.js",
+		"/Users/bryanwoodard/Desktop/charles local mapping/PVH/speedo/power reviewes.js",
+		"/Users/bryanwoodard/Google Drive/clients/PVH /powerreviews CC.js",
+		"/Users/bryanwoodard/Google Drive/clients/IBM/sample webhook data.json",
+		"/Users/bryanwoodard/Google Drive/clients/IBM/Data Template - Webhook.json",
+		"/Users/bryanwoodard/Desktop/charles local mapping/qvc/referral squatch.js",
+		"/Users/bryanwoodard/Google Drive/clients/qvc/referral squatch cust container.js",
+		"/Users/bryanwoodard/Google Drive/clients/Shoebuy/prodcut finding method script.js",
+		"/Users/bryanwoodard/Google Drive/clients/Academic Partnerships/SC doPlugins-EDITED.js",
+		"/Users/bryanwoodard/Google Drive/clients/Academic Partnerships/SC plugins and modules.js",
+		"/Users/bryanwoodard/Google Drive/clients/Academic Partnerships/:plugin actual code.js",
+		"/Users/bryanwoodard/Google Drive/clients/Luxottica/ET - API calls and Error Responses",
+		"/Users/bryanwoodard/Google Drive/clients/Carnival/CCL Call 6:12",
+		"/Users/bryanwoodard/Google Drive/clients/Carnival/CCL Shit - convoluted relationships",
+		"/Users/bryanwoodard/Google Drive/clients/Augusta Sportswear/ASG - Mailchimp : Abandon Cart",
+		"/Users/bryanwoodard/Google Drive/clients/Pacific Coast Feather/Campaign logic",
+		"/Users/bryanwoodard/Desktop/charles local mapping/petco /palscookie utag.js",
+		"/Users/bryanwoodard/Google Drive/clients/Luckyvitamin/CJ mobile pixel call - Param discussion",
+		"/Users/bryanwoodard/Desktop/charles local mapping/mason/shoemall prod_utag.js",
+		"/Users/bryanwoodard/Desktop/charles local mapping/mason/cart.html",
+		"/Users/bryanwoodard/Google Drive/clients/Luckyvitamin/Mobile - order conf udo.json",
+		"/Users/bryanwoodard/Desktop/charles local mapping/luckyvitamin/lv qa, utag.js",
+		"/Users/bryanwoodard/Desktop/Squeal Offers/Forward Planning.docx",
+		"/Users/bryanwoodard/Desktop/charles local mapping/advanceauto/advanceauto utag.js",
+		"/Users/bryanwoodard/Google Drive/clients/autonation/autonation issue - call:solution -dup utags",
+		"/Users/bryanwoodard/Google Drive/clients/Mason/Mason- Monetate tagging worksheet ",
+		"/Users/bryanwoodard/Google Drive/clients/Mason/monetate env routing.js",
+		"/Users/bryanwoodard/Google Drive/clients/Pacific Coast Feather/pac coast modal 5%off.html",
+		"/Users/bryanwoodard/Desktop/charles local mapping/advanceauto/advanceauto fb tag 191.js",
+		"/Users/bryanwoodard/Google Drive/Ray meeting May 2017",
+		"/Users/bryanwoodard/Desktop/charles local mapping/mason/:Mason - shoemall utag.js : Monetate stuff.js",
+		"/Users/bryanwoodard/Google Drive/clients/Mass Mutual/MassMutual link tracking generic script.js",
+		"/Users/bryanwoodard/Desktop/charles local mapping/Vera Bradley/vbatg_utag.js",
+		"/Users/bryanwoodard/Desktop/charles local mapping/CCL/Carnival : Main : Cart emarketing Case + notes",
+		"/Users/bryanwoodard/Desktop/charles local mapping/CCL/:ccl- collect tag.js",
+		"/Users/bryanwoodard/Google Drive/clients/One Kings Lane/OKL full story tag - custom container.js",
+		"/Users/bryanwoodard/Google Drive/clients/One Kings Lane/OKL - full story notes",
+		"/Users/bryanwoodard/Google Drive/clients/One Kings Lane/OKL - full story tag code-in production.js .js",
+		"/Users/bryanwoodard/Google Drive/clients/Academic Partnerships/Wistia - Academic Partnerships",
+		"/Users/bryanwoodard/Google Drive/clients/Paulas Choice/Paulas Choice Media Math",
+		"/Users/bryanwoodard/Google Drive/clients/Provide Commerce/Provide Commerce: PCR? Kenshoo tag",
+		"/Users/bryanwoodard/Desktop/charles local mapping/Academic Partnerships/ap-utagjs_SC tracking.js",
+		"/Users/bryanwoodard/Google Drive/clients/Paulas Choice/kenshoo tag temlate edit with new data point.js",
+		"/Users/bryanwoodard/Google Drive/clients/petco/Natures variety in cart determine script floodlight.js",
+		"/Users/bryanwoodard/Google Drive/clients/Mason/Mason x Monetate functionality flow",
+		"/Users/bryanwoodard/Google Drive/clients/Shoebuy/unsubscribe email tracking script.js",
+		"/Users/bryanwoodard/Google Drive/clients/truecar/GUA edited template optimize.js",
+		"/Users/bryanwoodard/Google Drive/clients/Augusta Sportswear/Augusta Sportswear signup tracking script.js",
+		"/Users/bryanwoodard/Google Drive/clients/truecar/:GUA stock template truecar.js"
+	],
+	"find":
+	{
+		"height": 47.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"set",
+			"order_sh",
+			"_corder",
+			"order_",
+			"181",
+			"5c9",
+			"udo",
+			"promo",
+			"confirma",
+			".com",
+			"free",
+			"pickup",
+			"name",
+			"ry",
+			"purchase",
+			"id",
+			"oid",
+			"net",
+			"//",
+			".net",
+			"optout",
+			"getPPVSetup",
+			"_tpDST",
+			"attachifram",
+			"m.send(",
+			"fire",
+			"soft",
+			"&",
+			"amp",
+			"_ip",
+			"ip",
+			"rackEven",
+			"getQueryParam",
+			"pf",
+			"userid",
+			"”",
+			"“",
+			"appm",
+			"appme",
+			"vidassets",
+			"&",
+			"prefe",
+			"pref",
+			"p.pr",
+			"ddo.u.p.pr",
+			"langua",
+			"pref_la",
+			"preferredlanguage",
+			"order_tax",
+			"sid",
+			"}",
+			"engine",
+			"u.map",
+			"login",
+			"wishli",
+			"naviga",
+			"top_nav",
+			"cm_sp",
+			"home",
+			"HOME",
+			"list",
+			"410",
+			"promo",
+			"backgroun",
+			"optimi",
+			"gtm",
+			"tracking",
+			"settime",
+			"remkt_product",
+			"create",
+			"created",
+			"require",
+			"u.cre",
+			"create",
+			"send",
+			"GTM-5FZRQQZ",
+			"style",
+			"asyn",
+			"cre",
+			"create",
+			"utag.js",
+			"badges",
+			"product_unit_price",
+			"b.product_unit_price",
+			"103",
+			"\");\n",
+			"\",\n",
+			"_id",
+			"testPrivacy",
+			"document.getElementsByTagName(\"body\")",
+			"getElementsByTagName(\"body\")",
+			"document.getElementsByTagName(\"body\")",
+			"customer_email",
+			"customer",
+			"email",
+			"mer_ema",
+			"custo",
+			"email",
+			"customer",
+			"email",
+			"tealium_",
+			"optimi",
+			"u.seth",
+			"pagev",
+			"ga",
+			"ga(",
+			"create",
+			"ga",
+			"send",
+			"actions",
+			"ted_act",
+			"visit",
+			"ted_act",
+			"gts.push",
+			"bottom",
+			"$BV.SI.trackTransaction",
+			"207",
+			"lang",
+			"test user",
+			"u.remove_",
+			"evt_lis",
+			"none",
+			"ev",
+			"nol",
+			"base",
+			"url",
+			"jquery",
+			"base"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			"term",
+			"b",
+			"b[",
+			"last_viewed_pathname",
+			"b.",
+			"utag.data.",
+			"b.product_name",
+			"\"",
+			"",
+			"\"",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app.js",
+					"settings":
+					{
+						"buffer_size": 1368,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								794,
+								794
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/client/main.js",
+					"settings":
+					{
+						"buffer_size": 2672,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2032,
+								2032
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "data/recipes.json",
+					"settings":
+					{
+						"buffer_size": 6,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6,
+								6
+							]
+						],
+						"settings":
+						{
+							"auto_name": "//Data",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "next steps.txt",
+					"settings":
+					{
+						"buffer_size": 760,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								760,
+								760
+							]
+						],
+						"settings":
+						{
+							"auto_name": "next steps:",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 1907,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								854,
+								854
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.524022830939,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"{"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 152.0,
+	"status_bar_visible": true
+}

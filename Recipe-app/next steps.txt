@@ -1,0 +1,25 @@
+next steps:
+	- fix form to resemble section 1 submit
+	- populate recipes.json with dummy data
+		- think about how to structue the data.
+	- creates a results
+	- add functions to get data, match, and return recipes.
+	- add results view to display that data
+	- fix issue where adding to form doesnt send more datata
+		-maybe on click post? https://stackoverflow.com/questions/17809056/how-to-add-additional-fields-to-form-before-submit
+		- Most likely because new form fields have no name
+		- also fix the add more )val function to set name
+
+
+//Sample recipe format:
+
+{
+	id: 0001,
+	name: ["Jamabalaya"],// as Set maybe -- new Set([]),
+	meal: "Dinner"
+	types: ["One Pot"],
+	ingredients:["rice","celery","tomatoes","onion"],
+	step_count: 4,
+	steps:[],
+	time: .75,
+}
